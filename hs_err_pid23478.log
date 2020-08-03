@@ -1,0 +1,65 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 104857600 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2754), pid=23478, tid=0x00007ff6d4afa700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_242) (build 1.8.0_242-release-1644-b3-6222593)
+# Java VM: OpenJDK 64-Bit Server VM (25.242-b3-6222593 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007ff6e4078800):  VMThread [stack: 0x00007ff6d49fa000,0x00007ff6d4afb000] [id=23489]
+
+Stack: [0x00007ff6d49fa000,0x00007ff6d4afb000],  sp=0x00007ff6d4af9480,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xa1317d]  VMError::report_and_die()+0x15d
+V  [libjvm.so+0x4d7bca]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x878fb8]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xd8
+V  [libjvm.so+0x87088f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8ea5fb]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8eb250]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xb0
+V  [libjvm.so+0x8eb56b]  PSYoungGen::resize(unsigned long, unsigned long)+0x1b
+V  [libjvm.so+0x8e7cc8]  PSScavenge::invoke_no_policy()+0xdb8
+V  [libjvm.so+0x8e8458]  PSScavenge::invoke()+0x38
+V  [libjvm.so+0x89c9e3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0xa14d24]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0xa191b7]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0xa17b98]  VMThread::evaluate_operation(VM_Operation*)+0x218
+V  [libjvm.so+0xa17ff9]  VMThread::loop()+0x219
+V  [libjvm.so+0xa18453]  VMThread::run()+0x83
+V  [libjvm.so+0x8760c2]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007ff65454b830): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007ff68c00c000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007ff6501cd000 JavaThread "WorkerExecutor Queue Thread 5" [_thread_blocked, id=24411, stack(0x00007ff64ec83000,0x00007ff64ed84000)]
+  0x00007ff6500f4000 JavaThread "Cache worker for Java compile cache (/home/morten/Dokumenter/horserace/Horserace_Handover/android/HORSERACE PRESENTER APP/project code/HorseRacePresenter/.gradle/6.1.1/javaCompile)" [_thread_blocked, id=24410, stack(0x00007ff64ed84000,0x00007ff64ee85000)]
+  0x00007ff6500f2000 JavaThread "Cache worker for Java compile cache (/home/morten/.gradle/caches/6.1.1/javaCompile)" [_thread_blocked, id=24409, stack(0x00007ff64ee85000,0x00007ff64ef86000)]
+  0x00007ff69805d800 JavaThread "stdout" [_thread_in_native, id=24402, stack(0x00007ff64ef86000,0x00007ff64f087000)]
+  0x00007ff69805c000 JavaThread "stderr" [_thread_in_native, id=24401, stack(0x00007ff64f087000,0x00007ff64f188000)]
+  0x00007ff69805a800 JavaThread "process reaper" daemon [_thread_in_native, id=24400, stack(0x00007ff64f188000,0x00007ff64f1c1000)]
+  0x00007ff6795a6000 JavaThread "stdout" [_thread_in_native, id=24398, stack(0x00007ff64f1c1000,0x00007ff64f2c2000)]
+  0x00007ff6795a5000 JavaThread "stderr" [_thread_in_native, id=24397, stack(0x00007ff64f2c2000,0x00007ff64f3c3000)]
+  0x00007ff650132000 JavaThread "stdout" [_thread_in_native

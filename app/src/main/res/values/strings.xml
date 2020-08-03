@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Horse Race Presenter</string>
+    <string name="time">Time : </string>
+
+    <string-array name="question_time_array">
+        <item>10 Sec</item>
+        <item>15 Sec</item>
+        <item>20 Sec</item>
+        <item>25 Sec</item>
+        <item>30 Sec</item>
+        <item>45 Sec</item>
+        <item>60 Sec</item>
+    </string-array>
+
+    <string-array name="correct_options_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+</resources>
